@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+
+{% block title %}Update Book | My{% endblock %}
+
+{% block style %}
+<style>
+    body {
+    background-color : #eee;
+    }
+    .navbar {
+        background-color: white;
+    }
+    .form-title{
+        border-bottom: 1px solid lightgray;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2>Upload book</h2>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% load crispy_forms_tags %}
+                            {{ form.media }}
+                            {{ form | crispy }}
+                            <button type="submit" class="btn btn-primary"> Save </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/image-stabilizer2.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron bg-primary">
+        <div class="container d-flex flex-column align-items-center ">
+           <img class="img-fluid" src="{% static 'baru/assets/images/Jumbotron.svg' %}" alt="">
+    <h1 class=" my-4 ">Belajar apapun disini melalui buku yang sudah tersedia diwebsite ini.</h1>
+            <a class="btn btn-danger w-25 mb-3 " href="/book/">List Buku</a>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img class="img-fluid" src="{% static 'baru/assets/images/Asset 1.svg' %}" alt="">
+                </div>
+                <div class="col-lg-6 caption mt-5 pl-5">
+                    <h3 class="pt-3">Gratis E-Books</h3>
+                    <p class="text-secondary pt-3">Baca buku gratis seperti buku sekolah dari SD, SMP, SMK atau SMA, buku buku tersebut dibagikan secara gratis untuk menunjang pelajaran kamu supaya lebih giat membaca buku</p>
+                    <a href="/book/" class="btn btn-primary mt-3">Explore buku</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="favorite-book" class="mt-5 mb-5 bg-primary text-white pt-5 pb-5">
+        <h1 class="text-center  font-weight-bold">Favorite Book</h1>
+        <p class="text-center">Berikut ini adalah buku favorite yang diambil berdasarkan rating dan jumlah pembacanya </p>
+        <div class="container">
+            <div class="row">
+            {% for book in fav_books %}
+                    <div class="col-lg-4 mt-5">
+                        <div class="card border-0">
+                            <div class="book-img-container overflow-hidden">
+                                <img src="{{ book.cover.url }}" alt="Gambar Buku {{ book.cover }}"
+                                    class="card-img-top img-fluid book-img">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text text-dark font-weight-bold">{{ book.title }}</p>
+                                <a href="{{ book.link }}" class="text-info">Lihat buku</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div id="search">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1 class="text-primary font-weight-bold">Cari buku </h1>
+                    <p class="text-secondary">Cari buku apapun yang kamu suka entah itu komik atau buku pelajaran yang kamu sukai, lalu pelajari buku tersebut secara perlahan lahan sampai buku itu habis kamu baca </p>
+                </div>
+
+                <div class="col-sm-6">
+                    <form action="{% url 'read:book-list' %}" method="get">
+                        <div class="input-group " style="margin-top:60px">
+                            <input type="text" name="q" class="form-control border-0 ">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pencapaian" class="bg-primary">
+        <div class="container mt-5">
+            <div class="d-flex flex-column align-items-center ">
+            <h1 class="text-white mt-4">Pencapaian</h1>
+            <p class="text-white mt-4 mb-4">Pencapaian yang kita dapat saat ini, ayo saatnya gabung bersama member lainnya dan juga bisa menambahkan pengetahuan kamu berdasarkan apa yang kamu cari.</p>
+
+            </div>
+            <div class="row pb-5">
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="{% static 'baru/assets/images/Book.svg' %}" alt="" class="pt-3" height="120">
+                        <div class="card-body text-center">
+                            <h4>Total Buku</h4>
+                            <p>{{ book_total }} Buku</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="{% static 'baru/assets/images/Member.svg' %}" alt="" class="pt-3" height="120">
+                        <div class="card-body text-center pb-3">
+                            <h4>Total Member</h4>
+                            <p>{{ member }} Member</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="{% static 'baru/assets/images/Kategori_1.svg' %}" alt="" class="pt-3" height="120">
+                        <div class="card-body text-center">
+                            <h4>Total Kategori</h4>
+                            <p>{{ category }} kategori</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="content" class=" my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img class="img-fluid" src="{% static 'baru/assets/images/Asset 1.svg' %}" alt="">
+                </div>
+                <div class="col-lg-6 caption mt-5 pl-5">
+                    <h3 class="pt-3">Bagikan Buku</h3>
+                    <p class="text-secondary pt-3">Kamu bisa menjual buku kamu disini dan bisa berperan penting sebagai donatur pembagi buku sehingga bisa meningkatkan angka literasi diindonesia dengan cara itu.</p>
+                    <a href="/my/" class="btn btn-primary mt-3">Upload Buku</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="perpustakaan-maps bg-primary text-white mt-5 pt-5 ">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 mt-5">
+                    <h3 class="font-weight-bold">Perpustakaan terdekat</h3>
+                    <p>Selain membaca buku kamu bisa menemukan perpustakaan terdekat lho, penasaran? yuk klik dibawah ini untuk menggunakan fitur perpustakaan terdekat</p>
+                    <a href="/maps/" class="btn btn-danger">Lihat Peta</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{% static 'images/perpus.svg' %}" alt="Perpustakaan terdekat">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+body {
+    background-color : #eee;
+}
+.navbar {
+    background-color: white;
+}
+.row{
+    min-height: 90vh;
+}
+.form-title{
+    border-bottom: 1px solid lightgray;
+}

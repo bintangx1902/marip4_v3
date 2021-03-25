@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    background-color: #eee;
+}
+.jumbotron {
+    background-color: #00adb5;
+  
+    text-align: center;
+    
+}
+.jumbotron h1 {
+    
+    font-size: 30px;
+    width: 50%;
+    letter-spacing: 1.5px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #eee;
+
+}
+.list {
+    margin-top: 20px;
+    font-size: 18px;
+    
+   
+}
+.list:hover {
+    background-color: black !important;
+    transition: all 0.4s;
+    color: white;
+}
+#registrasi {
+    background-color: #00adb5;
+    color: white;
+    text-align: center;
+}
+
+#registrasi p {
+    font-size: 20px;
+    line-height: 32px;
+    margin-bottom: 100px;
+    width: 50%;
+
+}
+#content .caption h3 {
+    font-weight: bold;
+    
+}
+#content .caption p {
+    font-size: 18px;
+}
+#pencapaian {
+    background-color: #00adb5;
+}
+.card {
+    border: none;
+}

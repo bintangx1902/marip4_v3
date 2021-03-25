@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+
+{% block title %}{{book.title}}{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <section class="container my-5">
+        <div class="card border-0 " >
+            <div class="card-body ">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% load crispy_forms_tags %}
+                        {{ form.media }}
+                        {{form | crispy}}
+                        <div class="form-group">
+                            <button class="btn btn-primary"> Save </button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+
+{% block title %}Main Menu{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/profile-update.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="jumbotron bg-primary">
+            <div class="d-flex justify-content-center">
+                <img src="{% static 'images/profile.svg' %}" height="400" class="img-fluid jumbtrn-image" alt="">
+            </div>
+            <div class="container mt-5">
+                <h1 class="text-center font-weight-bold">Edit Profile</h1>
+                <p class="text-center text-white">{{ userprofile.name }}</p>
+            </div>
+        </div>
+        <div class="content mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% load crispy_forms_tags %}
+                                    {{ form.media }}
+                                    {{ form | crispy }}
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

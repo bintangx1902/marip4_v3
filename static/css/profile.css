@@ -1,0 +1,66 @@
+body {
+    background-color : #eee;
+}
+.navbar {
+    background-color: white;
+}
+svg {
+    position:relative;
+    top: 5px;
+}
+
+@media screen and (min-width:220px ) and (max-width:390px) {
+    .col-lg-8 .overview h3 {
+        font-size: 28px;
+    }
+    .col-lg-8 .overview p {
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 1366px ) and (max-width : 1920px) {
+    .jumbtrn-image {
+        height: 400px;
+    }
+    #suka {
+        z-index: -1;
+    }
+}
+.jumbotron h1 {
+    font-size: 30px;
+    color: white;
+
+
+}
+.card-book {
+    max-height: 120px !important;
+
+}
+.profile h4 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.profile p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.profile a {
+    font-size: 22px;
+}
+.overview h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+
+}
+ .sub{
+    font-size: 24px;
+}
+#suka {
+    background-color: #0275d8;
+}
+#suka h3{
+    font-size: 30px;
+}
+#footer {
+    background-color: white;
+}
+

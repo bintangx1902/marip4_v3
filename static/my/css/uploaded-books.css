@@ -1,0 +1,40 @@
+body {
+    background-color : #eee;
+}
+.navbar {
+    background-color: white;
+}
+svg {
+    position:relative;
+    top: 5px;
+}
+
+@media screen and (min-width:220px ) and (max-width:390px) {
+    .col-lg-8 .overview h3 {
+        font-size: 28px;
+    }
+    .col-lg-8 .overview p {
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 1366px ) and (max-width : 1920px) {
+    .jumbtrn-image {
+        height: 400px;
+    }
+    #suka {
+        z-index: -1;
+    }
+}
+
+.jumbotron h1 {
+    font-size: 30px;
+    color: white;
+}
+
+.book-item{
+    transition: transform 200ms ease-in-out
+}
+
+.book-item:hover{
+    transform: scale(1.05)
+}

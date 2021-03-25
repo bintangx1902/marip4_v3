@@ -1,0 +1,15 @@
+body {
+    background-color : #eee;
+}
+.navbar {
+    background-color: white;
+}
+.container1{
+    min-height: 80vh;
+}
+.book-title{
+    border-bottom: 1px solid lightgray;
+}
+.book-detail{
+    max-width: 65ch;
+}

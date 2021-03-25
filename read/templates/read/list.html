@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+
+{% block title %}Book List{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        background-color: #eee;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'css/image-stabilizer.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron bg-primary">
+    <div class="container">
+        <div class="row">
+            {% for new in new_book %}
+            <div class="col-lg-6 mb-5">
+                <div class="d-flex justify-content-center">
+                    <img class="img-fluid " src="{{ new.cover.url }}" alt="">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <h1 class="text-white font-weight-bold">{{ new.title }}</h1>
+                <p class="text-white">{{ new.description | safe }}</p>
+                <a href="{% url 'read:detail' new.link %}" class="btn btn-danger">Detail Buku</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="container mb-5">
+    <div class="card">
+            <div class="card-body">
+                <div class="book mb-5">
+                    <div class="container">
+                        <div class="card mb-5">
+                            <div class="card-body">
+                                <form method="get">
+                                    <div  class="input-group ">
+                                        <div class="w-100 row mx-auto" >
+                                            <input type="text" name="q" class="form-control col-10 " placeholder="Cari buku yang anda inginkan disini">
+                                            <button type="submit" class="btn btn-primary col-2">Search</button>
+                                        </div>
+                                    </div>
+                                    <div class="input-group d-block">
+                                        <a class="btn mt-2" type="button" data-toggle="collapse"
+                                        data-target="#checkbox-container" aria-expanded="false"
+                                        aria-controls="checkbox-container">
+                                            Kategori
+                                            <svg style="height: 24px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </a>
+                                        <div id="checkbox-container" class="collapse">
+                                            <div class="p-2 row">
+                                                {% for cat in category %}
+                                                <div class="col-md-2 col-6">
+                                                    <input type="checkbox" name="s" id="Check{{ cat.pk }}" value="{{ cat.pk }}">
+                                                    <label for="Check{{ cat.pk }}">{{ cat.name }}</label>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-8">
+
+                                <div class="row">
+                                    {% if object_list %}
+                                        {% for book in object_list %}
+                                        <div class="col-lg-4 mt-4">
+                                            <div class="card border-0">
+                                                <div class="book-img-container overflow-hidden">
+                                                    <img src="{{ book.cover.url }}" alt=""
+                                                        class="card-img-top img-fluid book-img">
+                                                </div>
+                                                <div class="card-body">
+                                                    <p>{{ book.title }}</p>
+                                                    <a href="{% url 'read:detail' book.link %}" class="text-primary font-weight-bold">Lihat buku</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+                                    {% else %}
+                                    {% endif %}
+                                </div>
+
+                                {% if is_paginated %}=
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        {% if page_obj.has_previous %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Next"><span aria-hidden="true">«</span></a></li>
+                                        {% endif %}
+                                        <li class="page-item active"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                                        {% if page_obj.has_next %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        {% endif %}
+
+                                    </ul>
+                                </nav>
+                                {% endif %}
+
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card border-0">
+
+                                    <div class="card-body">
+                                        <h3 class="font-weight-bold "> Buku Favorit</h3>
+                                        <hr class="mt-4"> {% for fav in fav_books %}
+                                        <div class="d-flex">
+                                            <img height="150" class="mt-3" src="{{ fav.cover.url }}" alt="">
+                                            <div class="caption ml-3">
+                                                <p class="font-weight-bold">Siswa handal pelajaran madrasah</p>
+                                                <p>Dengan ini anda bisa melihat bagaimana sih cara belajar anak madrasah</p>
+                                                <a href="{% url 'read:detail' fav.link %}" class="text-primary">Lihat buku</a>
+                                            </div>
+                                        </div>
+                                        <hr> {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

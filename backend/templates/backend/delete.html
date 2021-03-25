@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+
+{% block title %}Upload Book | My{% endblock %}
+
+{% block style %}
+<style>
+    body {
+    background-color: #eee;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="my-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2>Delete Book</h2>
+                        <h4>Book : {{ book.title }}</h4>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% load crispy_forms_tags %}
+                            {{ form.media }}
+                            {{ form | crispy }}
+                            <button type="submit" class="btn btn-danger"> Delete </button>
+                            <br>
+                            <a href="{% url 'my:book-detail' book.link %}" class="mt-2 btn btn-outline-success rounded-pill"> Cancel </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
